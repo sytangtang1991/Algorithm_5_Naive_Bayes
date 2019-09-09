@@ -9,6 +9,9 @@ Created on Thu Sep  5 07:13:15 2019
 import numpy as np
 import pandas as pd
 
+#####################
+# Create data
+#####################
 data=[['A','S',0],
       ['A','M',0],
       ['A','M',1],
@@ -27,7 +30,9 @@ data=[['A','S',0],
       ]
 data = pd.DataFrame(data,columns=['x1','x2','y'])
 
-
+###############################
+# Train Naive Bayes model
+###############################
 def Naive_Bayes(data):
     # Step 1: Calculate Prior Probability
     y_unique = data.y.unique()
@@ -52,7 +57,10 @@ def Naive_Bayes(data):
  
 prior_probability,conditional_probability = Naive_Bayes(data)
 
+
+######################
 # Prediction
+######################
 def prediction(X):
     x1=X[0];x2=X[1]
     p0=prior_probability[0]*conditional_probability['x1'][x1][0]*conditional_probability['x2'][x2][0]
